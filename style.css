@@ -1,0 +1,241 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
+
+:root {
+    --soft-red: #ec775f;
+    --cyan: #76b5bc;
+
+    --dark-brown: #382314;
+    --medium-brown: #93867b;
+    --cream: #f8e9dd;
+    --pale-orange: #fffaf5;
+
+    --text: 1.125rem;
+
+    --weight-lg: 700;
+    --weight-sm: 400;
+}
+
+*,
+*::after,
+*::before {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    width: 100%;
+    line-height: 1;
+    font-size: var(--text);
+    font-weight: var(--weight-sm);
+    color: var(--dark-brown);
+    background-color: var(--cream);
+}
+
+main {
+    width: 100%;
+}
+
+.container {
+    min-width: 500px;
+    width: 550px;
+    max-width: 600px;
+    min-height: 500px;
+    height: 600px;
+    background-color: var(--cream);
+    border-radius: 20px;
+    overflow: hidden;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+}
+
+.nav {
+    width: 100%;
+    padding: 1.8rem;    
+
+    color: var(--pale-orange);
+    background-color: var(--soft-red);
+    border-radius: 20px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.my-balance {
+    display: grid;
+    gap: .8rem;
+}
+
+.eyebrow {
+    font-size: var(--text);
+    font-weight: var(--weight-sm);
+    color: var(--pale-orange);
+}
+
+.balance {
+    font-size: 2rem;
+    letter-spacing: 1px;
+}
+
+/* DASHBOARD */
+
+.dashboard {
+    width: 100%;
+    padding: 2rem 1.8rem;
+
+    background-color: var(--pale-orange);
+    border-radius: 20px;
+
+    display: flex;
+    flex-direction: column;
+    gap: .8rem;
+}
+
+.title {
+    font-size: 2rem;
+    font-weight: var(--weight-lg);
+}
+
+.graph {
+    width: 100%;
+    min-height: 200px;
+    height: 250px;
+    max-height: 250px;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--medium-brown);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: .7rem;
+
+    position: relative;
+}
+
+.day {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: center;
+}
+
+@keyframes bg-color {
+    from { background-color: var(--soft-red); }
+    to { background-color: var(--cyan); }
+}
+.data {
+    position: relative;
+    top: -5px;
+    z-index: 3;
+
+    width: 100%;
+    display: none;
+
+    padding: .5rem .2rem;
+    background-color: var(--dark-brown);
+    font-size: 1rem;
+    color: var(--pale-orange);
+    text-align: center;
+    border-radius: 5px;
+
+    display: flex; /* flex */
+    justify-content: center;
+    align-items: center;
+
+    scale: 0;
+    transition: all .4s ease;
+}
+
+.day-graph {
+    width: 80%;
+    max-width: 48px;
+    height: 60%;
+    background-color: var(--soft-red);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+.label {
+    color: var(--medium-brown);
+    font-size: var(--text);
+    font-weight: var(--weight-sm);
+    text-align: center;
+    padding-block: .5rem;
+}
+
+/* TOTAL */
+
+.total-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    padding-block: 1rem 2rem;
+}
+
+.current,
+.previous {
+    display: flex;
+    flex-direction: column;
+    gap: .6rem;
+}
+
+.total-sub {
+    font-size: var(--text);
+    font-weight: var(--weight-sm);
+    color: var(--medium-brown);
+}
+
+.total {
+    font-size: 2.8rem;
+    font-weight: var(--weight-lg);
+    letter-spacing: 1px;
+}
+
+.previous { gap: .2rem; }
+
+.percentage {
+    text-align: end;
+    font-weight: var(--weight-lg);
+}
+
+@media (max-width: 600px) {
+    .container {
+        width: 90%;
+        height: auto;
+        margin: 0 auto;
+        min-width: 280px;
+    }
+    .dashboard,
+    .nav {
+        padding: 1rem;
+    }
+    .day { width: 12%; }
+    .graph { gap: 0; }
+    .label { font-size: .9rem; }
+    .total { font-size: 1.3rem; }
+    .data { font-size: .7rem; }
+    .title,
+    .balance {
+        font-size: 1.3rem;
+    }
+    .total-sub { font-size: .8rem; }
+}
+
+/* TOGGLE */
+
+.block { scale: 1; }
+.tion { animation: bg-color 1s  2 normal both; }
